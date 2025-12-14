@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rodcaeta <rodcaeta@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/08 14:30:53 by marvin            #+#    #+#             */
-/*   Updated: 2025/12/08 14:30:53 by marvin           ###   ########.fr       */
+/*   Created: 2025/12/13 20:37:40 by rodcaeta          #+#    #+#             */
+/*   Updated: 2025/12/13 20:37:40 by rodcaeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H 
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H 
+# define GET_NEXT_LINE_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>

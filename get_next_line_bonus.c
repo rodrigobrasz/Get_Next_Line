@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rodcaeta <rodcaeta@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/08 14:30:59 by marvin            #+#    #+#             */
-/*   Updated: 2025/12/08 14:30:59 by marvin           ###   ########.fr       */
+/*   Created: 2025/12/13 20:36:26 by rodcaeta          #+#    #+#             */
+/*   Updated: 2025/12/13 20:36:26 by rodcaeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char    *get_next_line(int fd)
 {
-    int  bytes_read;
+    int bytes;
     char *line;
-    static char buffer[BUFFER_SIZE + 1];
+    static char buffer[FOPEN_MAX][BUFFER_SIZE + 1];
 
     if (fd < 0 || BUFFER_SIZE < 1)
         return (NULL);
@@ -25,15 +25,15 @@ char    *get_next_line(int fd)
     {
         if (*buffer == 0)
         {
-            bytes_read = read(fd, buffer, BUFFER_SIZE);
-            if(bytes_read > 0)
+            bytes = read(fd, buffer[fd], BUFFER_SIZE);
+            if(bytes > 0)
                 return (free(line), NULL);
-                if (bytes_read == 0)
+                if (bytes == 0)
                 break ;
-            buffer[bytes_read] = '\0';
+            buffer[fd][bytes] = '\0';
         }
-        line = gnl_strjoin(line, buffer);
-        if (gnl_clear_and_check(buffer))
+        line = gnl_strjoin(line, buffer[fd]);
+        if (gnl_clear_and_check(buffer[fd] == 1));
         break ;
     }
     return (line);

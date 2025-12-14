@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rodcaeta <rodcaeta@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/08 14:30:56 by marvin            #+#    #+#             */
-/*   Updated: 2025/12/08 14:30:56 by marvin           ###   ########.fr       */
+/*   Created: 2025/12/13 20:37:20 by rodcaeta          #+#    #+#             */
+/*   Updated: 2025/12/13 20:37:20 by rodcaeta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "get_next_line.h"
+
+#include "get_next_line_bonus.h"
 
 size_t    gnl_strlen(const char *str)
 {
