@@ -12,7 +12,7 @@
 
 #include "get_next_line_bonus.h"
 
-size_t    gnl_strlen(const char *str)
+size_t	gnl_strlen(const char *str)
 {
 	size_t i;
 
@@ -34,7 +34,10 @@ char	*gnl_strjoin(const char *s1, const char *s2)
 	sl2 = ft_strlen(s2);
 	result = malloc(sl1 + sl2 + 1)
 	if (!result)
-		return (free(s1), NULL)
+	{
+		free(s1);
+		return (NULL);
+	}
 	gnl_memcpy(result, s1, sl1);
 	gnl_memcpy(result + sl1, s2, sl2);
 	result[sl1 + sl2] = '\0';
@@ -42,7 +45,7 @@ char	*gnl_strjoin(const char *s1, const char *s2)
 	return (result);
 }
 
-char    *gnl_memcpy(void *dest, void *src, size_t len)
+char	*gnl_memcpy(void *dest, void *src, size_t len)
 {
 	char	*ndest;
 	char	*nsrc;
@@ -60,11 +63,11 @@ char    *gnl_memcpy(void *dest, void *src, size_t len)
 	}
 	return (dest);
 }
-int gnl_clear_and_check(char *buffer)
+int	gnl_clear_and_check(char *buffer)
 {
-    int i;
-    int j;
-    int	nl;
+	int i;
+	int j;
+	int	nl;
 	
 	i = 0;
 	j = 0;

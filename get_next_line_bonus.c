@@ -18,12 +18,12 @@ char    *get_next_line(int fd)
     char *line;
     static char buffer[FOPEN_MAX][BUFFER_SIZE + 1];
 
-    if (fd < 0 || BUFFER_SIZE < 1)
+    if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE < 1)
         return (NULL);
     line = NULL;
     while (1)
     {
-        if (*buffer == 0)
+        if (*buffer[fd] == 0)
         {
             bytes = read(fd, buffer[fd], BUFFER_SIZE);
             if(bytes > 0)
@@ -37,4 +37,20 @@ char    *get_next_line(int fd)
         break ;
     }
     return (line);
+}
+
+int main(int ac, char **av)
+{
+	char *line;
+	int i;
+	int fd;
+	(void) ac;
+
+	i = 0;
+	fd = open(av[i], O_RDONLY);
+	while (i < ac)
+	{
+		
+	}
+
 }
