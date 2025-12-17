@@ -16,6 +16,20 @@ You can set any value to the BUFFER_SIZE:
 
 cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c main.c -o gnl
 
+Testers
+
+regular file:
+curl -O https://raw.githubusercontent.com/rodrigobrasz/Get_Next_Line/main/miquella1.txt
+
+empty file:
+curl -O https://raw.githubusercontent.com/rodrigobrasz/Get_Next_Line/main/empty.txt
+
+main file:
+curl -O https://raw.githubusercontent.com/rodrigobrasz/Get_Next_Line/main/main.c
+
+
+
+
 # ALGORITHM EXPLANATION
 
 The primary goal is to develop a deeper understanding of static variables, dynamic memory allocation, and buffer management in C.
