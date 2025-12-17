@@ -12,32 +12,30 @@
 
 #include "get_next_line_bonus.h"
 
-size_t	gnl_strlen(const char *str)
+size_t    gnl_strlen(const char *str)
 {
 	size_t i;
 
 	i = 0;
 	if (!str)
 		return (0);
-	while(str[i] && str[i] != '\n')
-		i++;
+	while(str[i])
+		if(str[i++] == '\n')
+			break ;
 	return(i);
 }
 
-char	*gnl_strjoin(const char *s1, const char *s2)
+char	*gnl_strjoin(char *s1, char *s2)
 {
 	size_t  sl1;
 	size_t  sl2;
 	char    *result;
 
-	sl1 = ft_strlen(s1);
-	sl2 = ft_strlen(s2);
-	result = malloc(sl1 + sl2 + 1)
+	sl1 = gnl_strlen(s1);
+	sl2 = gnl_strlen(s2);
+	result = malloc(sl1 + sl2 + 1);
 	if (!result)
-	{
-		free(s1);
-		return (NULL);
-	}
+		return (free(s1), NULL);	
 	gnl_memcpy(result, s1, sl1);
 	gnl_memcpy(result + sl1, s2, sl2);
 	result[sl1 + sl2] = '\0';
@@ -45,7 +43,7 @@ char	*gnl_strjoin(const char *s1, const char *s2)
 	return (result);
 }
 
-char	*gnl_memcpy(void *dest, void *src, size_t len)
+void    *gnl_memcpy(void *dest, void *src, size_t len)
 {
 	char	*ndest;
 	char	*nsrc;
@@ -61,13 +59,13 @@ char	*gnl_memcpy(void *dest, void *src, size_t len)
 		ndest[i] = nsrc[i];
 		i++;
 	}
-	return (dest);
+	return (ndest);
 }
-int	gnl_clear_and_check(char *buffer)
+int gnl_clear_and_check(char *buffer)
 {
-	int i;
-	int j;
-	int	nl;
+    int i;
+    int j;
+    int	nl;
 	
 	i = 0;
 	j = 0;

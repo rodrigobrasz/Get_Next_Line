@@ -14,7 +14,7 @@
 
 char    *get_next_line(int fd)
 {
-    int bytes;
+    int bytes_read;
     char *line;
     static char buffer[FOPEN_MAX][BUFFER_SIZE + 1];
 
@@ -25,32 +25,64 @@ char    *get_next_line(int fd)
     {
         if (*buffer[fd] == 0)
         {
-            bytes = read(fd, buffer[fd], BUFFER_SIZE);
-            if(bytes > 0)
+            bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
+            if(bytes_read < 0)
                 return (free(line), NULL);
-                if (bytes == 0)
-                break ;
-            buffer[fd][bytes] = '\0';
+            if (bytes_read == 0)
+        		break ;
+            buffer[fd][bytes_read] = '\0';
         }
         line = gnl_strjoin(line, buffer[fd]);
-        if (gnl_clear_and_check(buffer[fd] == 1));
-        break ;
+        if(gnl_clear_and_check(buffer[fd]) == 1)
+       		break ;
     }
     return (line);
 }
 
+/*
+#include <fcntl.h>
+#include <stdio.h>
+
 int main(int ac, char **av)
 {
-	char *line;
-	int i;
-	int fd;
+	int		fd1;
+	int 	fd2;
+	char	*line1;
+	char	*line2;
+	int		i;
+	int		j;
 	(void) ac;
 
 	i = 0;
-	fd = open(av[i], O_RDONLY);
-	while (i < ac)
-	{
-		
-	}
+	j = 0;
 
-}
+	fd1 = open(av[1], O_RDONLY);
+	fd2 = open (av[2], O_RDONLY);
+	if (fd1 < 0 || fd2 < 0)
+	{
+		printf("open failed");
+		return (1);
+	}
+	while (1)
+	{
+		line1 = get_next_line(fd1);
+		line2 = get_next_line(fd2);
+		if(!fd1 && !fd2)
+		{
+			return (1);
+		}
+		if(line1)
+		{
+			printf("[%03d] = %s", ++i, line1);
+			free(line1);
+		}
+		if(line2)
+		{
+			printf("[%03d] = %s", ++j, line2);
+			free(line2);
+		}
+	}
+	close(fd1);
+	close(fd2);
+	return (0);
+}*/

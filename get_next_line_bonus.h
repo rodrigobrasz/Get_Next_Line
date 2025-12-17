@@ -22,8 +22,8 @@
 #endif
 
 size_t   gnl_strlen(const char *str);
-char	*gnl_strjoin(char const *s1, char const *s2);
-char    *gnl_memcpy(void *dest, void *src, size_t len);
+char	*gnl_strjoin(char *s1, char *s2);
+void    *gnl_memcpy(void *dest, void *src, size_t len);
 int     gnl_clear_and_check(char *buffer);
 
 #endif

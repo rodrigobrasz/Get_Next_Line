@@ -46,7 +46,8 @@ static	void test_one_file()
 		free(line);
 		i++;
 	}
-	close(fd);
+	if (fd >= 0)
+		close(fd);
 }
 
 static	void test_empty_file()
@@ -65,10 +66,11 @@ static	void test_empty_file()
 		printf("The file is empty. (correct behavior!)\n");
 	else
 	{
-		printf("Expected a empty file, but returned: (%s)\n", line);
+		printf("Expected a empty file, but returned: %s\n", line);
 		free (line);
 	}
-	close(fd);
+	if (fd >= 0)
+		close(fd);
 }
 
 int main(void)
