@@ -33,9 +33,7 @@ static	void test_one_file()
 	fd = open("miquella1.txt", O_RDONLY);
 	i = 1;
 	printf("=====================================\n");
-	printf("||                                 ||\n");
 	printf("||     reading: miquella1.txt      ||\n");
-	printf("||                                 ||\n");
 	printf("=====================================\n");
 	while (1)
 	{
@@ -73,22 +71,44 @@ static	void test_empty_file()
 		close(fd);
 }
 
+static void test_strdin()
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	while(1)
+	{
+		fflush(stdout);
+		line = get_next_line(0);
+		if (!line)
+			{
+				printf("\r\033[K");
+				break ;
+			}
+		printf("-» [%d] = %s", i, line);
+		i++;
+		free (line);
+	}
+}
+
 int main(void)
 {
 	printf("=====================================\n");
-	printf("||                                 ||\n");
-	printf("||     GET_NEXT_LINE_TESTS         ||\n");
-	printf("||                                 ||\n");
+	printf("||      GET_NEXT_LINE_TESTS        ||\n");
 	printf("=====================================\n");
 	wait_for_enter();
 	test_one_file();
 	wait_for_enter();
 	printf("=====================================\n");
-	printf("||                                 ||\n");
-	printf("||     EMPTY FILE TEST             ||\n");
-	printf("||                                 ||\n");
+	printf("||        EMPTY FILE TEST          ||\n");
 	printf("=====================================\n");
 	wait_for_enter();
 	test_empty_file();
+	wait_for_enter();
+	printf("=====================================\n");
+	printf("||          STDIN TEST             ||\n");
+	printf("=====================================\n");
+	test_strdin();
 	return (0);
 }
