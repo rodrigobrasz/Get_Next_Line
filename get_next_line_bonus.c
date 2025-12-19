@@ -39,7 +39,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*
+/* 
 #include <fcntl.h>
 #include <stdio.h>
 
@@ -63,26 +63,20 @@ int main(int ac, char **av)
 		printf("open failed");
 		return (1);
 	}
-	while (1)
+	line1 = get_next_line(fd1);
+	line2 = get_next_line(fd2);
+	while ((line1 = get_next_line(fd1)) != NULL)
 	{
-		line1 = get_next_line(fd1);
-		line2 = get_next_line(fd2);
-		if(!fd1 && !fd2)
-		{
-			return (1);
-		}
-		if(line1)
-		{
-			printf("[%03d] = %s", ++i, line1);
-			free(line1);
-		}
-		if(line2)
-		{
-			printf("[%03d] = %s", ++j, line2);
-			free(line2);
-		}
+		printf("%s", line1);
+		free(line1);
+	}
+	printf("=======================================================\n");
+	while ((line2 = get_next_line(fd2)) != NULL)
+	{
+		printf("%s", line2);
+		free(line2);
 	}
 	close(fd1);
 	close(fd2);
 	return (0);
-}*/
+} */
